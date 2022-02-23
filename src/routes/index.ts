@@ -33,5 +33,10 @@ product.post(
   validateProduct.amount,
   productController.create,
 );
+product.get(
+  '/',
+  validateToken,
+  productController.getAll,
+);
 
 export default { user, login, product };

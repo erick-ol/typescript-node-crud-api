@@ -22,4 +22,12 @@ const create = async (prodInfo: Product): Promise<ProductReturn> => {
   };
 };
 
-export default { create };
+const getAll = async () => {
+  const [result] = await connection.query<ResultSetHeader>(
+    'SELECT * FROM Trybesmith.Products;',
+  );
+
+  return result;
+};
+
+export default { create, getAll };
