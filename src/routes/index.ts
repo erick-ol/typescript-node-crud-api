@@ -1,10 +1,14 @@
 import express from 'express';
 import userController from '../controllers/user';
+import productController from '../controllers/product';
 import validateUser from '../controllers/middlewares/validateUser';
 import validateLogin from '../controllers/middlewares/validateLogin';
+import validateProduct from '../controllers/middlewares/validateProduct';
+import validateToken from '../controllers/middlewares/validateToken';
 
 const user = express.Router();
 const login = express.Router();
+const product = express.Router();
 
 user.post(
   '/',
@@ -22,4 +26,12 @@ login.post(
   userController.login,
 );
 
-export default { user, login };
+product.post(
+  '/',
+  validateToken,
+  validateProduct.name,
+  validateProduct.amount,
+  productController.create,
+);
+
+export default { user, login, product };
