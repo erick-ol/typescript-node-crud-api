@@ -1,13 +1,9 @@
 import jwt from 'jsonwebtoken';
+import JwtUser from '../interfaces/jwt';
 
 const JWT_SECRET = 'asd234ASE#$@ASDq234';
 
-interface Payload {
-  id: number;
-  username: string;
-}
-
-const sign = (payload: Payload, duration = '1h') =>
+const sign = (payload: JwtUser, duration = '1h') =>
   jwt.sign(payload, JWT_SECRET, {
     algorithm: 'HS256',
     expiresIn: duration,
