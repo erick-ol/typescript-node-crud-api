@@ -9,9 +9,8 @@ interface Create {
 
 const create = async (userInfo: User): Promise<Create> => {
   const { username, classe, level, password } = userInfo;
-  await connection.query('USE Trybesmith;');
   const [{ insertId: id }] = await connection.query<ResultSetHeader>(
-    'INSERT INTO Users (username, classe, level, password) VALUES (?, ?, ?, ?);',
+    'INSERT INTO Trybesmith.Users (username, classe, level, password) VALUES (?, ?, ?, ?);',
     [username, classe, level, password],
   );
 
