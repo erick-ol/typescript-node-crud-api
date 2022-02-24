@@ -45,8 +45,13 @@ product.get(
 order.post(
   '/',
   validateToken,
-  validateOrder,
+  validateOrder.create,
   orderController.create,
+);
+order.get(
+  '/:id',
+  validateToken,
+  orderController.getById,
 );
 
 export default { user, login, product, order };

@@ -4,7 +4,7 @@ import StatusCode from '../../enums/StatusCode';
 
 const { BAD_REQUEST, UNPROCESSABLE_ENTITY } = StatusCode;
 
-export default async (req: Request, res: Response, next: NextFunction) => {
+const create = async (req: Request, res: Response, next: NextFunction) => {
   const { products: prod } = req.body;
 
   const { error: prodArrayNumErr } = Joi.array().items(Joi.number()).validate(prod);
@@ -25,3 +25,5 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
   next();
 };
+
+export default { create };
